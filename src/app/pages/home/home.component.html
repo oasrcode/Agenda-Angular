@@ -1,1 +1,20 @@
-<p>home works!</p>
+<div class="flex flex-col max-w-full h-full" >
+  <h1 class="text-8xl text-center pt-20">Agenda</h1>
+  <div class="flex justify-end items-center w-1/3 h-auto mx-auto">
+    <button (click)="showModal()"><i class="material-icons text-4xl hover:translate-y-[0.5px] hover:text-font-todo hover:opacity-70"> add_circle </i></button>
+  
+  </div>
+  <div
+    class="grid grid-flow-row grid-cols-2 w-1/3 max-w-full mx-auto mt-10 gap-14 overflow-y-visible"
+  >
+    <app-todo-card></app-todo-card>
+    <app-todo-card></app-todo-card>
+    <app-todo-card></app-todo-card>
+    <app-todo-card></app-todo-card>
+  </div>
+  
+  <ng-container *ngIf="modalIsActive==true">
+    <app-modal-form (closeEvent)="closeModal()"></app-modal-form>
+  </ng-container>
+ 
+</div>

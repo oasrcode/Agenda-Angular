@@ -2,3 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&family=Literata");
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two&family=Literata");
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+body{
+    font-family: 'Lobster Two';
+    font-weight: 700;
+    color: #e63946;
+    background-color: #F1FAEE;
+    
+}
+
