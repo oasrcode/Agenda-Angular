@@ -1,96 +1,100 @@
-<div
-  class="fixed flex flex-col z-10 inset-0 w-1/4 h-3/4 mx-auto mt-20 bg-[#a8dadc] border-[1px] border-[#1d3557] rounded-md"
->
-  <button
-    class="bg-[#f1faee] self-end border-l-[1px] border-b-[1px] border-[#1d3557] hover:hover:bg-[#e63946] rounded-bl-md rounded-tr-md"
-    (click)="close()"
+<div class="fixed flex z-20 inset-0 w-full h-screen bg-[#1d3557]">
+  <div
+    class=" flex flex-col  w-1/4 h-3/4 mx-auto mt-20 bg-[#a8dadc] border-[1px] border-[#1d3557] rounded-md"
   >
-    <i
-      class="material-icons p-2 text-xl hover:animate-pulse hover:text-[#f1faee]"
+    <button
+      class="bg-[#f1faee] self-end border-l-[1px] border-b-[1px] border-[#1d3557] hover:hover:bg-[#e63946] rounded-bl-md rounded-tr-md"
+      (click)="close()"
     >
-      close
-    </i>
-  </button>
+      <i
+        class="material-icons p-2 text-xl hover:animate-pulse hover:text-[#f1faee]"
+      >
+        close
+      </i>
+    </button>
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" id="ngForm">
-    <div class="flex flex-col items-center justify-end space-y-10">
-      <h3 class="text-3xl">Crear nota</h3>
-      <div class="flex flex-col w-3/4">
-        <label class="text-xl" for="title"
-          >Título
-          <input
-            class="text-[#1d3557] border-2 border-[#1d3557] rounded-md py-2 w-full"
-            type="text"
-            name="title"
-            formControlName="title"
-            required
-          />
-        </label>
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" id="ngForm">
+      <div class="flex flex-col items-center justify-end space-y-10">
+        <h3 class="text-3xl">Crear nota</h3>
+        <div class="flex flex-col w-3/4">
+          <label class="text-xl" for="title"
+            >Título
+            <input
+              class="text-[#1d3557] border-2 border-[#1d3557] rounded-md py-2 w-full"
+              type="text"
+              name="title"
+              formControlName="title"
+              required
+            />
+          </label>
 
-        <p
-          class="text-sm rounded-lg mt-2 text-center bg-red-200 text-red-600 w-full"
-          *ngIf="form.get('title')?.touched && form.get('title')?.errors?.['required']"
-        >
-          El campo es quererido
-        </p>
-
-        <p
-          class="text-sm rounded-lg mt-2 text-center bg-red-200 text-red-600 w-full"
-          *ngIf="form.get('title')?.errors?.['minlength']"
-        >
-          Caracteres insuficiente
-        </p>
-      </div>
-      <div class="flex flex-col w-3/4">
-        <label class="text-xl" for="title">Fecha </label>
-        <input
-          class="text-[#1d3557] border-2 border-[#1d3557] rounded-md py-2"
-          type="date"
-          name="date"
-          formControlName="date"
-          required
-        />
-        <p
-          class="text-sm rounded-lg mt-2 text-center bg-red-200 text-red-600 w-full"
-          *ngIf="form.get('title')?.touched && form.get('date')?.errors?.['required']"
-        >
-          El campo es quererido
-        </p>
-      </div>
-      <div class="flex flex-col w-3/4">
-        <label class="text-xl" for="summ"
-          >Resumen
-          <textarea
-            class="text-[#1d3557] border-2 border-[#1d3557] rounded-md py-2 w-full"
-            name="summ"
-            placeholder="resumen de la nota"
-            formControlName="summ"
-          ></textarea>
           <p
             class="text-sm rounded-lg mt-2 text-center bg-red-200 text-red-600 w-full"
-            *ngIf="form.get('title')?.touched && form.get('summ')?.errors?.['required']"
+            *ngIf="form.get('title')?.touched && form.get('title')?.errors?.['required']"
           >
             El campo es quererido
           </p>
+
           <p
             class="text-sm rounded-lg mt-2 text-center bg-red-200 text-red-600 w-full"
-            *ngIf="form.get('summ')?.errors?.['maxlength']"
+            *ngIf="form.get('title')?.errors?.['minlength']"
           >
-            Mensaje demasiado largo
+            Caracteres insuficiente
           </p>
-        </label>
+        </div>
+        <div class="flex flex-col w-3/4">
+          <label class="text-xl" for="title">Fecha </label>
+          <input
+            class="text-[#1d3557] border-2 border-[#1d3557] rounded-md py-2"
+            type="date"
+            name="date"
+            formControlName="date"
+            required
+          />
+          <p
+            class="text-sm rounded-lg mt-2 text-center bg-red-200 text-red-600 w-full"
+            *ngIf="form.get('title')?.touched && form.get('date')?.errors?.['required']"
+          >
+            El campo es quererido
+          </p>
+        </div>
+        <div class="flex flex-col w-3/4">
+          <label class="text-xl" for="summ"
+            >Resumen
+            <textarea
+              class="text-[#1d3557] border-2 border-[#1d3557] rounded-md py-2 w-full"
+              name="summ"
+              placeholder="resumen de la nota"
+              formControlName="summ"
+            ></textarea>
+            <p
+              class="text-sm rounded-lg mt-2 text-center bg-red-200 text-red-600 w-full"
+              *ngIf="form.get('summ')?.touched && form.get('summ')?.errors?.['required']"
+            >
+              El campo es quererido
+            </p>
+            <p
+              class="text-sm rounded-lg mt-2 text-center bg-red-200 text-red-600 w-full"
+              *ngIf="form.get('summ')?.errors?.['maxlength']"
+            >
+              Mensaje demasiado largo
+            </p>
+          </label>
+        </div>
       </div>
-    </div>
-  </form>
-  <button
-    type="submit"
-    class="flex text-xl bg-[#1d3557] hover:bg-[#F1FAEE] hover:opacity-70 hover:translate-y-[1px] px-8 py-2 self-center rounded-md items-center gap-2 mt-10"
-    form="ngForm"
-    [disabled]="!form.valid"
-  >
-    Gaurdar
-    <i class="material-icons text-xl hover:animate-pulse hover:text-[#f1faee]">
-      save
-    </i>
-  </button>
+    </form>
+    <button
+      type="submit"
+      class="flex text-xl bg-[#1d3557] hover:bg-[#F1FAEE] hover:opacity-70 hover:translate-y-[1px] px-8 py-2 self-center rounded-md items-center gap-2 mt-10"
+      form="ngForm"
+      [disabled]="!form.valid"
+    >
+      Gaurdar
+      <i
+        class="material-icons text-xl hover:animate-pulse hover:text-[#f1faee]"
+      >
+        save
+      </i>
+    </button>
+  </div>
 </div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TodoCardComponent } from './todo-card/todo-card.component';
 import { ModalFormComponent } from './modal-form/modal-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  RouterModule
   ],
   exports:[TodoCardComponent,ModalFormComponent]
 })

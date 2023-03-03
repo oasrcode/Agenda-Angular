@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { SharedComponentsModule } from '../components/shared-components.module';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +15,9 @@ import { SharedComponentsModule } from '../components/shared-components.module';
   ],
   imports: [
     CommonModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports:[HomeComponent,TodoDetailComponent]
 
