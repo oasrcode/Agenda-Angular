@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/interfaces/ITodo';
 import { StorageDBService } from 'src/app/services/storeDB.service';
 
@@ -8,13 +8,18 @@ import { StorageDBService } from 'src/app/services/storeDB.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   modalIsActive = false;
   private todoList!:Todo[];
 
   constructor(private storageDBService: StorageDBService ){
+   
+  }
+  ngOnInit(): void {
     this.getAll()
   }
+
+  
 
 
   getAll(){
