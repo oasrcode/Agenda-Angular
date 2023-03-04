@@ -10,7 +10,7 @@
     </button>
   </div>
   <div
-    class="grid grid-flow-row grid-cols-2 lg:w-1/3 max-w-full mx-auto mt-10 gap-4 lg:gap-14 overflow-y-visible"
+    class="grid grid-flow-row pb-20 grid-cols-2 lg:w-1/3 max-w-full mx-auto mt-10 gap-4 lg:gap-14 overflow-y-visible"
   >
     <ng-container *ngFor="let item of getlist">
       <app-todo-card [todo]="item" (onTodoDelete)="getAll()"></app-todo-card

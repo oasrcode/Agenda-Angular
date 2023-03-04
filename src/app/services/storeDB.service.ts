@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import Dexie from 'dexie';
-import { from, map, Observable, Subject } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { Todo } from '../interfaces/ITodo';
 @Injectable({
   providedIn: 'root',
 })
 export class StorageDBService {
   private db: Dexie = new Dexie('todoDB');
-  private dbChangeSubject = new Subject<void>();
+
   constructor() {
     this.initDB();
   }
@@ -25,7 +25,6 @@ export class StorageDBService {
   public getTodo(id: number): Observable<Todo> {
     return from(this.db.table('todos').get(id)).pipe(
       map((todo: Todo) => {
-        this.dbChangeSubject.next();
         return todo;
       })
     );
@@ -42,26 +41,20 @@ export class StorageDBService {
   public postTodo(todo: Todo): Observable<number> {
     return from(this.db.table('todos').add(todo)).pipe(
       map((id) => {
-        this.dbChangeSubject.next();
         return id as number;
       })
     );
   }
 
-  public deleteTodo(id:number):Observable<void>{
-    return from(this.db.table('todos').delete(id)).pipe(
-      map(()=>{
-        this.dbChangeSubject.next();
-      })
-    )
+  public deleteTodo(id: number): Observable<void> {
+    return from(this.db.table('todos').delete(id));
   }
 
-  public putTodo(todo:Todo):Observable<number>{
+  public putTodo(todo: Todo): Observable<number> {
     return from(this.db.table('todos').put(todo)).pipe(
-      map((id)=>{
-        this.dbChangeSubject.next()
+      map((id) => {
         return id as number;
       })
-    )
+    );
   }
 }
